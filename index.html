@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Embarcações</title>
+</head>
+<body>
+  <h2>Embarcações</h2>
+
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Comprimento</th>
+        <th>Motorização</th>
+        <th>Convés Aberto</th>
+        <th>Cabine Habitável</th>
+      </tr>
+    </thead>
+    <tbody id="tabela"></tbody>
+  </table>
+
+  <script>
+    
+    function gerarEmbarcacao() {
+      return {
+        comprimento: (Math.random() * 20 + 5).toFixed(2) + " m",
+        motorizacao: Math.random() > 0.5 ? "motor de popa" : "motor interno",
+        convesAberto: Math.random() > 0.5,
+        cabineHabitavel: Math.random() > 0.7
+      };
+    }
+
+    
+    const embarcacoes = Array(50).fill().map(gerarEmbarcacao);
+
+    
+    const tabela = document.getElementById("tabela");
+    embarcacoes.forEach(e => {
+      tabela.innerHTML += `
+        <tr>
+          <td>${e.comprimento}</td>
+          <td>${e.motorizacao}</td>
+          <td>${e.convesAberto ? "Sim" : "Não"}</td>
+          <td>${e.cabineHabitavel ? "Sim" : "Não"}</td>
+        </tr>
+      `;
+    });
+  </script>
+</body>
+</html>
